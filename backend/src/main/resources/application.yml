@@ -1,0 +1,56 @@
+server:
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  application:
+    name: ai-plus-rag
+
+# DeepSeek LLM Configuration (OpenAI compatible)
+langchain4j:
+  open-ai:
+    chat-model:
+      base-url: https://api.deepseek.com
+      api-key: ${DEEPSEEK_API_KEY:sk-546ff6c09e2b498e8b68482bfc217f95}
+      model-name: deepseek-v4-flash
+      temperature: 0.7
+      max-tokens: 2048
+
+# Embedding Model Configuration
+rag:
+  embedding:
+    # 可选值: ollama(推荐) / remote(远程API) / local(ONNX本地模型)
+    type: ollama
+    # Ollama 配置（本地部署，无需API Key）
+    ollama:
+      base-url: http://localhost:11434
+      # 常用 Ollama Embedding 模型:
+      #   nomic-embed-text     (轻量推荐，~274MB)
+      #   mxbai-embed-large   (质量更高，~670MB)
+      #   all-minilm           (经典小模型)
+      # 使用前需先执行: ollama pull mxbai-embed-large
+      model-name: mxbai-embed-large
+    # 远程 API 配置（备用方案）
+    # 本地 ONNX 配置（内置模型，首次下载较慢）
+    local:
+      model: all-MiniLM-L6-v2
+
+  # RAG Retrieval Parameters
+  retrieval:
+    top-k: 5
+    min-score: 0.5
+
+  # Document Splitting Parameters
+  splitting:
+    max-segment-size: 1000
+    overlap: 200
+    chunk-overlap: 200
+
+# Logging
+logging:
+  level:
+    com.aiplus.rag: DEBUG
+    dev.langchain4j: INFO

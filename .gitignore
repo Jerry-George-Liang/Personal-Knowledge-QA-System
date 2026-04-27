@@ -1,0 +1,36 @@
+# IDE & Editor
+.trae/
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build outputs
+backend/target/
+backend/*.class
+frontend/dist/
+
+# Dependencies
+frontend/node_modules/
+
+# Environment files (may contain secrets)
+.env
+.env.*
+*.env
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test documents
+test-doc.md
+
+# Maven wrapper (already committed)
+# backend/mvnw
+# backend/mvnw.cmd
