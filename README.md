@@ -1625,3 +1625,4 @@ DocumentController.uploadDocument(@RequestParam MultipartFile)
 5. **前端 v-for key 策略**使用动态拼接（id + contentLength + loading），确保 Vue 能正确检测消息变更并触发重渲染
 6. **会话 ID** 为 16 位短 UUID（去掉连字符后截取），在前端显示时会截取前 8 位
 
+最后该系统还存在一些比较大的问题！如果有建议和改进欢迎联系我13642533686@163.com
